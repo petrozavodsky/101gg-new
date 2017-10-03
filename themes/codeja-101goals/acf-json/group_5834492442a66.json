@@ -1,0 +1,165 @@
+{
+    "key": "group_5834492442a66",
+    "title": "Posts",
+    "fields": [
+        {
+            "key": "field_583dd8674798a",
+            "label": "External Title",
+            "name": "codeja_external_title",
+            "type": "text",
+            "instructions": "Field this field if you want this title to be used instead of the original one",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_59919f9fc7823",
+            "label": "External Title to NEWSNOW",
+            "name": "codeja_external_title_to_newsnow",
+            "type": "text",
+            "instructions": "News Now Title",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_583dd80047988",
+            "label": "Is it a video?",
+            "name": "codeja_is_video",
+            "type": "true_false",
+            "instructions": "Will this video be a \"video\" post?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_583dd84347989",
+            "label": "Exclude from RSS? exclude",
+            "name": "codeja_exclude_from_rss",
+            "type": "true_false",
+            "instructions": "Should be included in RSS?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_584835108576d",
+            "label": "Use thumbnail",
+            "name": "codeja_use_thumbnail",
+            "type": "true_false",
+            "instructions": "Use featured image instead?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_584e85baaf3ea",
+            "label": "Odds to shop",
+            "name": "codeja_odds_to_show",
+            "type": "number",
+            "instructions": "Choose how much odds to show",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 10,
+            "step": ""
+        },
+        {
+            "key": "field_58595095e324a",
+            "label": "Show author?",
+            "name": "codeja_show_author",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "show": "Show",
+                "hide": "Hide"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1502715693
+}

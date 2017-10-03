@@ -1,0 +1,79 @@
+.spinner {
+    background: url('../images/wpspin_light.gif') no-repeat;
+    background-size: 16px 16px;
+    float: none;
+    opacity: .7;
+    filter: alpha(opacity=70);
+    width: 16px;
+    height: 16px;
+    margin: 5px 5px 0;
+    display: none;
+    visibility: visible;
+}
+
+.spinner.active {
+    display: inline-block;
+}
+
+#cjbl-get-new-games-description {
+    display: inline-block;
+    margin: 5px 10px 0;
+    vertical-align: middle;
+}
+
+.cjbl-small-header {
+    font-size: 14px;
+    float: right;
+    padding: 2px 15px;
+    background-color: #23282d;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.cjbl-image-upload-btn {
+    position: relative;
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.cjbl-image-upload-btn:after {
+    content: 'change';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-color: rgba(0,0,0,.7);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    -webkit-transition: ease-in-out 0.2s;
+    -moz-transition: ease-in-out 0.2s;
+    -ms-transition: ease-in-out 0.2s;
+    -o-transition: ease-in-out 0.2s;
+    transition: ease-in-out 0.2s;
+}
+
+.cjbl-image-upload-btn:hover:after {
+    opacity: 1;
+}
+
+.cjbl-image-upload-btn.no-image:after {
+    content: "+";
+    opacity: 1;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    padding: 0;
+}
+
+textarea.code {
+    height: 15em;
+}
