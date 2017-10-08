@@ -13,7 +13,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
+//set_query_var( '_IS_AMP_QUERY_VAR', 'is_amp' );
 get_header( 'amp' );
 
 $stream = new CJBL_Stream( $post );

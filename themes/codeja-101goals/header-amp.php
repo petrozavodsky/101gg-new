@@ -18,6 +18,12 @@
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
 	<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+	<script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+	<script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>
+	<script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>
+	<script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>
+	<script async custom-element="amp-facebook-comments" src="https://cdn.ampproject.org/v0/amp-facebook-comments-0.1.js"></script>
+	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 	<title><?php wp_title(); ?></title>
 	<?php wp_meta(); ?>
 	<link rel="profile" href="http://gmpg.org/xfn/11"/>
@@ -387,6 +393,30 @@
 			cursor: pointer;
 		}
 
+		.amp-codja-social-share {
+			text-align: center;
+			margin: 1rem 0;
+		}
+
+		.amp-codja-sub-title {
+			background-color: #232732;
+			color: #f6bf32;
+			margin-bottom: 20px;
+			padding: 10px;
+			text-align: center;
+			text-transform: capitalize;
+		}
+
+		.amp-codja-related-video-title {
+			color: #337ab7;
+			font-size: 16px;
+			font-weight: 700;
+			margin: 2rem 0 2rem;
+			display: block;
+			border-bottom: 1px solid #e1e8ed;
+			padding-bottom: 2rem;
+		}
+
 		@media screen and (max-width: 767px) {
 			.amp-codja-container {
 				margin: 15px 10px 15px 10px;
@@ -426,8 +456,3 @@
 <!--<section class="amp-codja-bc">-->
 <!--	--><?php //yoast_breadcrumb('<p id="breadcrumbs">','</p>'); ?>
 <!--</section>-->
-
-
-
-
-

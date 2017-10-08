@@ -20,12 +20,24 @@ get_header();
 ?>
 <?php if( have_rows('what_to_show_on_homepage', 674841)): $loop_repeater = 0 ?>
 	<?php while( have_rows('what_to_show_on_homepage', 674841)): the_row(); ?>
+        <?php
+        // START TIME AND END TIME TO IF APPEAR
+        $from_when = strtotime( get_sub_field( 'category_block_start_time' ) );
+        $to_when = strtotime( get_sub_field( 'category_block_end_time' ) );
+
+        if ( time() < $from_when || time() > $to_when  ) {
+            // CHECK IF ALWAYS TO APPEAR
+            if ( ! get_sub_field( 'category_block_always_show' ) ) {
+                continue;
+            }
+        } ?>
 
 		<?php if ( get_sub_field('category_block_banner') ) : ?>
 			<?php the_banner_placement( 'HOMEPAGE_BETWEEM_POSTS', $loop_repeater ) ?>
 			<?php the_banner_placement( 'HOMEPAGE_BETWEEM_POSTS_MOBILE', $loop_repeater ) ?>
 			<?php $loop_repeater++; ?>
-		<?php endif; ?>
+	    <?php endif; ?>
+
 
 		<div class="row">
 			<div class="col-md-12">
@@ -50,6 +62,15 @@ get_header();
 							'update_post_meta_cache' => false, // don't retrieve post meta,
 							'no_found_rows' => true, // counts posts, remove if pagination required,
 							);
+
+						// IF SPECIFIC POSTS ARE CHOSEN
+						$specific_posts = get_sub_field('category_block_specific_posts');
+
+						if ( ! empty ( $specific_posts ) ) {
+                            unset($args['cat']);
+
+                            $args['post__in'] = explode( ',', $specific_posts );
+                        }
 
 						$recent_posts = new WP_Query( $args );
 						$i = 0;
