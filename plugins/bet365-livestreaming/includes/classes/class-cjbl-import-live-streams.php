@@ -21,7 +21,7 @@ class CJBL_Import_Live_Streams {
 
 	private $hashed_row, $wpdb, $total_inserted_posts = array();
 
-	function __construct( ) {
+	function __construct() {
 		global $wpdb;
 
 		$this->wpdb    = $wpdb;

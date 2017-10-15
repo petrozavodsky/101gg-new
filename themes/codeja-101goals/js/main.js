@@ -176,5 +176,11 @@
 
         $('[data-toggle="tooltip"]').tooltip();
 
+        // load right sidebar
+        jQuery.get( "http://greatgoals101.staging.wpengine.com/sidebar/", function( data ) {
+            jQuery( ".sidebar-container" ).append( data );
+            jQuery( ".sidebar-container-loader" ).hide( 'fast' );
+        });
+
     }); // IF DOCUMENT READY
 })( jQuery ); // CLOSE JQUERY

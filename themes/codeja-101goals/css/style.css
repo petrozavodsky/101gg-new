@@ -2461,6 +2461,12 @@ iframe {
     column-gap: 1em;
 }
 
+@media screen and (max-width:767px) {
+    .videos-posts {
+        column-count: 1;
+    }
+}
+
 .video-post {
     display: inline-block;
     margin: 0 0 1em;
@@ -2538,5 +2544,3 @@ iframe {
 .cjbl_single_below_content-hook img {
     height: auto !important;
 }
-
-.

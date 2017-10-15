@@ -57,7 +57,7 @@
 
 .cjbl-tv:before {
     content: ' ';
-    background-image: url('/wp-content/plugins/bet365-livestreaming/assets/images/tv-stand.png');
+    background-image: url('../images/tv-stand.png');
     position: absolute;
     bottom: -60px;
     width: 451px;

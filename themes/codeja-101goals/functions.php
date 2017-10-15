@@ -1,4 +1,9 @@
 <?php
+// define( 'WP_DEBUG', true );
+// define( 'WP_DEBUG_DISPLAY', true );
+// @ini_set( 'display_errors', 'On' );
+// @error_reporting('E_ALL');
+
 /**
  * Created by PhpStorm.
  * User: KirillROCKS
@@ -1533,14 +1538,43 @@ function change_videosfeeds_yoast_title( $title ) {
 
 add_filter( 'wpseo_title', 'change_videosfeeds_yoast_title', 100, 1 );
 
+add_filter( 'template_include', 'cj_get_amp_templates', 10 );
 function cj_get_amp_templates( $template ) {
 	if ( cj_is_amp() ) {
 		if ( 'videosfeeds' === get_post_type( get_the_ID() ) && is_single() ) {
-			$template = get_template_directory() . '/' . 'amp' . '/' . get_post_type() . '/' . 'single-' . get_post_type() . '.php';
+			$template = get_template_directory() . '/templates/amp/' . get_post_type() . '/single-' . get_post_type() . '.php';
 		}
 	}
 
 	return $template;
 }
 
-add_filter( 'template_include', 'cj_get_amp_templates', 10 );
+function check_sidebar() {
+
+	$selected_sidebar = '';
+
+	if ( post_is_in_descendant_category( 16469 ) || is_singular( CJBL::$post_type ) || is_post_type_archive( CJBL::$post_type ) || is_tax( CJBL::$taxonomy ) ) {
+		$selected_sidebar = 'codeja-livestream-sidebar';
+	} elseif ( is_single() ) {
+		$selected_sidebar = 'codeja-single-sidebar';
+	} elseif ( is_category( 'betting' ) ) {
+		$selected_sidebar = 'codeja-betting-sidebar';
+	} else {
+		$selected_sidebar = 'codeja-default-sidebar';
+	}
+
+	return $selected_sidebar;
+
+}
+
+// add_action( 'init', 'cj_is_amp_init' );
+// function cj_is_amp_init() {
+// 	if ( get_query_var( 'is_amp' ) ) {
+// 		global $wp_rewrite;
+		
+// 		add_rewrite_endpoint( 'is_amp', EP_PERMALINK );
+	
+// 		var_dump($wp_rewrite->endpoints);
+// 		var_dump(get_query_var( 'is_amp' ));
+// 	}
+// }
