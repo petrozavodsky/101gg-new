@@ -16,18 +16,19 @@
 if ( ! is_404() ) : ?>
 	</div> <!-- #main -->
 	<?php if ( ! is_post_type_archive( 'videosfeeds' ) && ! is_singular( 'videosfeeds' ) ) : ?>
+		<div class="sidebar-container-loader" style="text-align: center;">
+			<img src="<?php echo get_template_directory_uri(); ?>/images/loader.svg" style="margin-top: 30px;">
+		</div>
+		<div class="sidebar-container"></div>
+
 		<script>
 			jQuery.get( "http://greatgoals101.staging.wpengine.com/sidebar/?selected_sidebar=<?php echo check_sidebar(); ?>", function( data ) {
 				jQuery( ".sidebar-container" ).append( data ).hide().slideDown();
 				jQuery( ".sidebar-container-loader" ).hide();
 			});
 		</script>
-		<div class="sidebar-container-loader" style="text-align: center;">
-			<img src="<?php echo get_template_directory_uri(); ?>/images/loader.svg" style="margin-top: 30px;">
-		</div>
-		<div class="sidebar-container"></div>
 	<?php endif; ?>
-	</div> <!-- #row -->
+	</div><!-- #row -->
 
 	<?php the_banner_placement( 'UNDER_CONTENT_BANNER' ); ?>
 <?php endif; ?>
