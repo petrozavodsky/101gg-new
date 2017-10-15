@@ -168,6 +168,7 @@ class CJBL_Stream {
         // REPLACE DATE WITH REAL DATA
         $content = str_replace( '{date}', $this->get_date('d-m-Y'), $content );
         $content = str_replace( '{time}', $this->get_date('H:i'), $content );
+        $link = '';
 
         if ( cj_is_amp() ) {
         	$link = '<a class="' . $class . '" href="' . $link .'" target="_blank">' . $content . '</a>';

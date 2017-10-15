@@ -2462,7 +2462,9 @@ iframe {
 }
 
 @media screen and (max-width:767px) {
-    .videos-posts {column-count: 1;
+    .videos-posts {
+        column-count: 1;
+    }
 }
 
 .video-post {
@@ -2542,5 +2544,3 @@ iframe {
 .cjbl_single_below_content-hook img {
     height: auto !important;
 }
-
-.

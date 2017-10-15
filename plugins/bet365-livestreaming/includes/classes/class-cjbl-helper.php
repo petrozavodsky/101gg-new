@@ -152,7 +152,7 @@ class CJBL_Helper {
 
     public static function enqueue() {
         wp_enqueue_script( 'cjbl-javascript', CJBL_PLUGIN_URL . 'assets/js/cjbl.js', array( 'jquery' ) );
-        wp_enqueue_style( 'cjbl-style', CJBL_PLUGIN_URL . 'assets/css/cjbl.css' );
+        //wp_enqueue_style( 'cjbl-style', CJBL_PLUGIN_URL . 'assets/css/cjbl.css' );
 
         wp_localize_script( 'cjbl-javascript', 'ajax_object',
             array( 'ajax_url' => admin_url( 'admin-ajax.php' ) )

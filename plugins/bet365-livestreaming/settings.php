@@ -55,8 +55,8 @@ function cjbl_activation() {
 	CJBL::update_option( 'post_author', get_super_admins()[0] );
 	CJBL::update_option( 'under-livestream-content', 'Demo under content' );
 
-    CJBL_Helper::register_post_type(); // REGISTER POST TYPES
-    CJBL_Helper::register_taxonomy(); // REGISTER TAXONOMIES
+	CJBL_Helper::register_post_type(); // REGISTER POST TYPES
+	CJBL_Helper::register_taxonomy(); // REGISTER TAXONOMIES
 
 	wp_schedule_event( time(), 'daily', 'cjbl_cronjob_import_new_streams' );
 
@@ -78,43 +78,46 @@ function cjbl() {
 
 add_action( 'init', 'cjbl_init' );
 function cjbl_init() {
-    CJBL_Helper::register_post_type(); // REGISTER POST TYPES
-    CJBL_Helper::register_taxonomy(); // REGISTER TAXONOMIES
-    flush_rewrite_rules(); // RESET PERMALINKS
+	CJBL_Helper::register_post_type(); // REGISTER POST TYPES
+	CJBL_Helper::register_taxonomy(); // REGISTER TAXONOMIES
+	flush_rewrite_rules(); // RESET PERMALINKS
 }
 
 function delete_all_posts() {
-    $posts = get_posts( array( 'post_type' => CJBL::$post_type, 'posts_per_page' => -1));
-    foreach( $posts as $post ) {
-        // Delete's each post.
-        wp_delete_post( $post->ID, true);
-        // Set to False if you want to send them to Trash.
-    }
+	$posts = get_posts( array(
+		'post_type' => CJBL::$post_type,
+		'posts_per_page' => -1,
+	) );
+	foreach ( $posts as $post ) {
+		// Delete's each post.
+		wp_delete_post( $post->ID, true );
+		// Set to False if you want to send them to Trash.
+	}
 }
 
 // IMPORT NEW STREAMS - CRONJOB
 add_action( 'cjbl_cronjob_import_new_streams', 'cjbl_import_streams' );
 function cjbl_import_new_streams() {
-    $cjbl_import_games = new CJBL_Import_Live_Streams();
-    $result = $cjbl_import_games->get_data_from_xml();
+	$cjbl_import_games = new CJBL_Import_Live_Streams();
+	$result = $cjbl_import_games->get_data_from_xml();
 
-	CJBL::add_log( 'CRONJOB updating live streams', 'New games imported: ' . ( $result == 0 ? 0 : $result ) . ' (function: cjbl_import_new_streams)' );
+	CJBL::add_log( 'CRONJOB updating live streams', 'New games imported: ' . ( 0 == $result ? 0 : $result ) . ' (function: cjbl_import_new_streams)' );
 }
 
 // CORRECT TEMPLATE FOR PLUGIN
 add_filter( 'template_include', 'cjbl_templates', 10 );
 function cjbl_templates( $template ) {
-    return CJBL_Helper::template_chooser( $template );
+	return CJBL_Helper::template_chooser( $template );
 }
 
 add_action( 'widgets_init', 'cjbl_load_sidebars' );
 function cjbl_load_sidebars() {
-    CJBL_Helper::register_sidebar();
+	CJBL_Helper::register_sidebar();
 }
 
 add_action( 'wp_enqueue_scripts', 'cjbl_enqueue_scripts' );
 function cjbl_enqueue_scripts() {
-    CJBL_Helper::enqueue();
+	CJBL_Helper::enqueue();
 }
 
 /** AJAX CALLS **/
@@ -122,11 +125,18 @@ function cjbl_enqueue_scripts() {
 // IMPORT NEW GAMES - AJAX
 add_action( 'wp_ajax_import_new_games', 'cjbl_ajax_import_streams' );
 function cjbl_ajax_import_streams() {
-    $cjbl_import_games = new CJBL_Import_Live_Streams();
+	$cjbl_import_games = new CJBL_Import_Live_Streams();
 	$result = $cjbl_import_games->get_data_from_xml();
 
-	CJBL::add_log( 'AJAX updating live streams', 'New games imported: ' . ( $result == 0 ? 0 : $result ) . ' (function: cjbl_ajax_import_streams)' );
+	CJBL::add_log( 'AJAX updating live streams', 'New games imported: ' . ( 0 == $result ? 0 : $result ) . ' (function: cjbl_ajax_import_streams)' );
 
 	echo $result;
 	wp_die(); // this is required to terminate immediately and return a proper response
+}
+
+add_action( 'wp', 'wp_ajax_import_new_games_activation' );
+function wp_ajax_import_new_games_activation() {
+	if ( ! wp_next_scheduled( 'wp_ajax_import_new_games' ) ) {
+		wp_schedule_event( time(), 'hourly', 'wp_ajax_import_new_games' );
+	}
 }

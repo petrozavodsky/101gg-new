@@ -1,1 +1,0 @@
-.selected-category {    display: inline-block;    background-color: lightgray;    border-radius: 2px;    padding: 5px;    margin-right: 5px;    transition: linear 0.1s;    margin-bottom: 5px;}.selected-category:hover {    background-color: #848484;}.delete-category {    font-size: 10px;    margin-left: 10px;    cursor: pointer;}#mceu_16 {    color: red;}
